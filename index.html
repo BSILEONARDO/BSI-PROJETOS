@@ -342,8 +342,8 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
 // ══════════════════════════════════════════════
 //  ⚙️  CONFIGURAÇÃO — edite estas duas linhas
 // ══════════════════════════════════════════════
-const SUPABASE_URL  = 'https://judwzkefbakzpynqptxi.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1ZHd6a2VmYmFrenB5bnFwdHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyOTA2NzAsImV4cCI6MjA5NDg2NjY3MH0.HIHq_f2Mrsp59sVeWHJ0BjZfHWJpI8Y_MBDHSctNCms';
+const SUPABASE_URL  = 'https://SEU-PROJETO.supabase.co';
+const SUPABASE_ANON = 'SUA-ANON-KEY-AQUI';
 // ══════════════════════════════════════════════
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
@@ -385,8 +385,8 @@ async function doLogout() {
 }
 
 // ── SESSION ──
-sb.auth.onAuthStateChange(async (_event, session) => {
-  if(session) {
+async function initSession(session) {
+  if(session && session.user) {
     currentUser = session.user;
     document.getElementById('authScreen').style.display = 'none';
     document.getElementById('appScreen').style.display  = 'block';
@@ -399,6 +399,17 @@ sb.auth.onAuthStateChange(async (_event, session) => {
     document.getElementById('appScreen').style.display  = 'none';
     lancamentos = []; recorrentes = [];
   }
+}
+
+// Verifica sessão existente ao carregar a página
+(async () => {
+  const { data } = await sb.auth.getSession();
+  await initSession(data.session);
+})();
+
+// Escuta mudanças de auth (login, logout, refresh de token)
+sb.auth.onAuthStateChange(async (_event, session) => {
+  await initSession(session);
 });
 
 // ── DATA ──
