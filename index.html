@@ -13,16 +13,16 @@
 /* veja o bloco <script> no final do arquivo */
 
 :root {
-  --bg:        #f7f5f0;
-  --surface:   #ffffff;
-  --border:    #e8e4dd;
-  --border2:   #d4cfc6;
-  --text:      #1a1916;
-  --muted:     #7a7570;
-  --accent:    #2a5bd7;
-  --accent-dk: #1e44a8;
-  --rec-color: #1D9E75;
-  --dep-color: #d94040;
+  --bg:        #0f0f0f;
+  --surface:   #1a1a1a;
+  --border:    #2e2e2e;
+  --border2:   #3a3a3a;
+  --text:      #e8e6e1;
+  --muted:     #666666;
+  --accent:    #4f7ef8;
+  --accent-dk: #3a65d4;
+  --rec-color: #22c98a;
+  --dep-color: #f05454;
   --font-h:    'DM Serif Display', serif;
   --font-b:    'DM Sans', sans-serif;
   --rad:       10px;
@@ -47,7 +47,7 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
   border-radius: var(--rad-lg);
   padding: 2.5rem 2rem;
   width: 360px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
 }
 .auth-logo { font-family: var(--font-h); font-size: 1.7rem; margin-bottom: 0.25rem; color: var(--text); }
 .auth-sub  { font-size: 0.82rem; color: var(--muted); margin-bottom: 2rem; }
@@ -146,10 +146,10 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
   text-overflow: ellipsis;
   line-height: 1.6;
 }
-.pill.critico { background: #fde8e8; color: #8b1a1a; }
-.pill.urgente { background: #fef3d0; color: #7a4800; }
-.pill.normal  { background: #deeafe; color: #1a3a8a; }
-.pill.baixo   { background: #d7f3e8; color: #0a4d2e; }
+.pill.critico { background: #3d1515; color: #f87171; }
+.pill.urgente { background: #3d2a00; color: #fbbf24; }
+.pill.normal  { background: #162044; color: #93b4fc; }
+.pill.baixo   { background: #0d3324; color: #6ee7b7; }
 .more { font-size: 0.6rem; color: var(--muted); }
 
 /* ── MODAL ── */
@@ -168,7 +168,7 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
   border-radius: var(--rad-lg);
   border: 1px solid var(--border);
   width: 480px; max-width: 100%;
-  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.6);
 }
 .modal-hdr {
   padding: 16px 20px;
@@ -202,7 +202,7 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
   border: 1px solid var(--border); margin-bottom: 6px;
   background: var(--surface);
 }
-.lanc-item.is-rec { background: #f7f5f0; }
+.lanc-item.is-rec { background: #222222; }
 .li-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .li-info { flex: 1; min-width: 0; }
 .li-desc { font-size: 0.85rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -212,8 +212,8 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
 .li-val.d { color: var(--dep-color); }
 .li-val.x { font-size: 0.72rem; color: var(--muted); font-style: italic; font-weight: 400; }
 .del-btn { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 0.9rem; flex-shrink: 0; padding: 3px 5px; border-radius: 5px; }
-.del-btn:hover { color: var(--dep-color); background: #fde8e8; }
-.badge-rec { font-size: 0.65rem; background: #d7f3e8; color: #0a4d2e; border-radius: 20px; padding: 1px 6px; margin-left: 4px; }
+.del-btn:hover { color: var(--dep-color); background: #3d1515; }
+.badge-rec { font-size: 0.65rem; background: #0d3324; color: #6ee7b7; border-radius: 20px; padding: 1px 6px; margin-left: 4px; }
 
 /* ── RECORRENTES TAB ── */
 .rec-list-item {
@@ -243,7 +243,7 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
 /* ── TOAST ── */
 #toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px);
-  background: #1a1916; color: #fff; padding: 10px 20px; border-radius: 30px;
+  background: #e8e6e1; color: #0f0f0f; padding: 10px 20px; border-radius: 30px;
   font-size: 0.82rem; z-index: 999; transition: transform .25s; pointer-events: none;
 }
 #toast.show { transform: translateX(-50%) translateY(0); }
@@ -342,8 +342,8 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text); mi
 // ══════════════════════════════════════════════
 //  ⚙️  CONFIGURAÇÃO — edite estas duas linhas
 // ══════════════════════════════════════════════
-const SUPABASE_URL  = 'https://judwzkefbakzpynqptxi.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_NGKOl212_0zKNqH4msFP2Q_DQPW1cQ_';
+const SUPABASE_URL  = 'https://SEU-PROJETO.supabase.co';
+const SUPABASE_ANON = 'SUA-ANON-KEY-AQUI';
 // ══════════════════════════════════════════════
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
